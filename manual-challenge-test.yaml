@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: manual-challenge-test
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: cybersec.raze.mx
+    http:
+      paths:
+      - path: /.well-known/acme-challenge
+        pathType: Prefix
+        backend:
+          service:
+            name: cybersec-demo
+            port:
+              number: 80

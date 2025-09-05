@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cybersec-challenge-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - cybersec.raze.mx
+    secretName: cybersec-tls-separate
+  rules:
+  - host: cybersec.raze.mx
+    http:
+      paths:
+      - path: /.well-known/acme-challenge
+        pathType: Prefix
+        backend:
+          service:
+            name: challenge-solver
+            port:
+              number: 8089
