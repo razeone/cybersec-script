@@ -1,0 +1,27 @@
+# Dependencias para el Servidor de Análisis de Exposición de Datos
+# Versión: 2.0 - Edición Revelada (Español)
+
+# Framework web principal
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Para realizar solicitudes HTTP (geolocalización IP)
+requests==2.31.0
+
+# Para manejo mejorado de fechas
+python-dateutil==2.8.2
+
+# Para servidor WSGI en producción (opcional)
+gunicorn==21.2.0
+
+# Para validación y manejo de datos JSON
+jsonschema==4.19.1
+
+# Para logging mejorado
+structlog==23.1.0
+
+# Para variables de entorno
+python-dotenv==1.0.0
+
+# Para seguridad adicional
+flask-talisman==1.1.0

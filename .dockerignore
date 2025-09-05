@@ -1,0 +1,77 @@
+# .dockerignore para Servidor de Análisis de Exposición de Datos
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistemas operativos
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Logs y temporales
+*.log
+logs/
+temp/
+tmp/
+
+# Archivos de backup
+*.backup
+*.bak
+
+# Archivos de prueba
+test_*
+*_test.py
+
+# Documentación
+docs/
+
+# Otros scripts del proyecto
+server.py
+server_enhanced.py
+server_revealed.py

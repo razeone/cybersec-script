@@ -1,0 +1,44 @@
+# Docker Compose para Servidor de Análisis de Exposición de Datos
+# Versión: 2.0 - Edición Revelada (Español)
+
+version: '3.8'
+
+services:
+  cybersec-demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cybersec-demo-es
+    image: cybersec-demo:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+      - PORT=5000
+    volumes:
+      # Montar logs para persistencia (opcional)
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - cybersec-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cybersec-demo.rule=Host(`localhost`)"
+      - "traefik.http.services.cybersec-demo.loadbalancer.server.port=5000"
+      - "com.docker.compose.project=cybersec-demo"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/salud"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  cybersec-network:
+    driver: bridge
+    name: cybersec-demo-network
+
+volumes:
+  logs:
+    driver: local
